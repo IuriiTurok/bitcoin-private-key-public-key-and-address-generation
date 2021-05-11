@@ -9,7 +9,6 @@ python = "^3.8"
 bitcoin = "^1.1.42"
 qrcode = "^6.1"
 urllib3 = "^1.26.4"
-urllib2_file = "^0.2.1"
 
 [tool.poetry.dev-dependencies]
 
