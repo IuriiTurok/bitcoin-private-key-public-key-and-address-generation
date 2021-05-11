@@ -3,7 +3,7 @@ import qrcode
 import urllib3
 
 count=0
-while True:
+for count in range(100):
   #generate a random private key
   valid_private_key = False
   while not valid_private_key:
@@ -54,17 +54,26 @@ while True:
   # Qrcode generator from compressed_address_base58check
   # img = qrcode.make(compressed_address_base58check)
 
-  satoshiadress = '1EzwoHtiXB4iFwedPr49iywjZn2nnekhoj'
+  #satoshiadress = '1EzwoHtiXB4iFwedPr49iywjZn2nnekhoj'
+  
   http = urllib3.PoolManager()
-  r = http.request('GET', 'https://blockchain.info/q/addressbalance/'+  compressed_address_base58check +'?confirmations=1')
-
-  if r.data == b'0' :
-    print ('0')    
+  URL = 'https://blockchain.info/q/addressbalance/'+  compressed_address_base58check +'?confirmations=1'
+  r = http.request('GET', URL)
+  print (URL)
+  print (r.satus)
+  
+  if r.data == b'0' : 
+    print ('1')
   else: 
-    print ('+')
-  print (r.data)
+    print ('Private Key (hex) is: ' + private_key)
+    print ('private Key (decimal) is: ' + str(decoded_private_key))
+    print ('Compressed Bitcoin Address (b58check) is: ' + bitcoin.pubkey_to_address(hex_compressed_public_key))
+    print('Private Key (WIF) is: ' + wif_encoded_private_key)
+    print ('Bitcoin Address (b58check) is: ' + bitcoin.pubkey_to_address(public_key))
+    break
+  
   count += 1
-  if count >= 5: break
+  print (count)
 
 #satoshiadress = '1EzwoHtiXB4iFwedPr49iywjZn2nnekhoj'
 #api_request = 'https://blockchain.info/q/addressbalance/'+  keyToAddr(private_key) +'?confirmations=1'
