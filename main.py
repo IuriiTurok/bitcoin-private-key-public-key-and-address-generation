@@ -2,7 +2,7 @@ import bitcoin
 import qrcode
 import urllib3
 import requests
-#import json
+import json
 
 def balance1(adr):
   #URLb = 'https://blockchain.info/q/addressbalance/'+adr+'?'
